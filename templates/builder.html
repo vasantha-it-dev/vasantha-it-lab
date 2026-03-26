@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Vasantha IT Lab | Builder</title>
+</head>
+<body class="bg-[#020617] text-white min-h-screen flex items-center justify-center p-4">
+    
+    <div class="bg-[#0f172a] border border-slate-800 p-10 rounded-3xl shadow-2xl w-full max-w-lg">
+        
+        <div class="flex flex-col items-center gap-3 border-b border-emerald-900/50 pb-6 mb-8 w-full">
+            <div class="p-3 rounded-full bg-emerald-950 border border-emerald-900/50 shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+            </div>
+            <div class="text-center">
+                <h1 class="text-2xl font-black text-white leading-none">
+                    Vasantha<span class="text-emerald-500">IT</span> <span class="text-[10px] text-emerald-700 font-bold relative -top-2">LAB</span>
+                </h1>
+                <p class="text-[9px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-1">Madurai | Digital Portfolio Engine</p>
+            </div>
+        </div>
+
+        <h1 class="text-2xl font-black text-emerald-400 mb-2">Portfolio Creator</h1>
+        <p class="text-slate-500 text-sm mb-8">Enter your details to generate your profile.</p>
+
+        <form action="/view" method="POST">
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Full Name</label>
+                    <input type="text" name="name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="e.g. Vasantha Kumar" required>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-4">Select Your Style</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="theme" value="cinematic" class="hidden peer" checked>
+                            <div class="border-2 border-slate-800 peer-checked:border-emerald-500 rounded-xl overflow-hidden transition-all bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=300&h=150&q=80" class="w-full h-16 object-cover opacity-50 group-hover:opacity-100">
+                                <p class="text-[9px] text-center py-1 font-bold">CINEMATIC</p>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="theme" value="cyber" class="hidden peer">
+                            <div class="border-2 border-slate-800 peer-checked:border-fuchsia-500 rounded-xl overflow-hidden transition-all bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300&h=150&q=80" class="w-full h-16 object-cover opacity-50 group-hover:opacity-100">
+                                <p class="text-[9px] text-center py-1 font-bold">CYBER</p>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="theme" value="minimal" class="hidden peer">
+                            <div class="border-2 border-slate-800 peer-checked:border-white rounded-xl overflow-hidden transition-all bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=150&q=80" class="w-full h-16 object-cover opacity-50 group-hover:opacity-100">
+                                <p class="text-[9px] text-center py-1 font-bold">MINIMAL</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Skills (Comma separated)</label>
+                    <input type="text" name="skills" placeholder="Python, HTML, UI/UX" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" required>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Bio</label>
+                    <textarea name="bio" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none" placeholder="Tell them who you are..." required></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-black py-4 rounded-2xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-emerald-500/40 transform hover:-translate-y-1">
+                    Generate Portfolio 🚀
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
