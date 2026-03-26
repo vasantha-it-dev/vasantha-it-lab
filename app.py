@@ -3,8 +3,8 @@ import os
 
 app = Flask(__name__)
 
-# --- THE PLAY STORE BRIDGE ---
-# These routes allow PWABuilder to find your app's "ID Card" and "Engine"
+# --- 1. THE PLAY STORE & PWA BRIDGE ---
+# This allows the Android App to find its identity and "engine"
 @app.route('/manifest.json')
 def serve_manifest():
     return send_from_directory('static', 'manifest.json')
@@ -13,17 +13,34 @@ def serve_manifest():
 def serve_sw():
     return send_from_directory('static', 'sw.js')
 
-# --- YOUR APP ROUTES ---
+# --- 2. THE MAIN PAGES ---
 @app.route('/')
 def home():
-    # This points to your main portfolio page
+    # Your main "Home" or "Portfolio" page
     return render_template('portfolio.html')
 
 @app.route('/builder')
 def builder():
+    # The page where users can build their own portfolio
     return render_template('builder.html')
 
-# Add any other routes (cyber_theme, etc.) here as needed
+# --- 3. THE THEMES ---
+# These are needed if your buttons link to specific theme previews
+@app.route('/theme/cyber')
+def cyber_theme():
+    return render_template('cyber_theme.html')
+
+@app.route('/theme/minimal')
+def minimal_theme():
+    return render_template('minimal_theme.html')
+
+# --- 4. IMAGE HELPER ---
+# This ensures that your 'profile.jpeg' or other images load correctly
+@app.route('/static/<path:filename>')
+def custom_static(filename):
+    return send_from_directory('static', filename)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # '0.0.0.0' helps Render listen to the outside world
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
