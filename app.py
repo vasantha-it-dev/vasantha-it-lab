@@ -1,7 +1,7 @@
 from flask import Flask, render_template, send_from_directory, make_response
 import os
 
-# This tells Flask to look inside the master1 folder for your files
+# This tells Flask to look specifically in the current folder for your files
 app = Flask(__name__, 
             template_folder='templates', 
             static_folder='static')
@@ -20,6 +20,7 @@ def serve_sw():
 
 @app.route('/')
 def home():
+    # Make sure your file is named portfolio.html inside the templates folder
     return render_template('portfolio.html')
 
 if __name__ == '__main__':
