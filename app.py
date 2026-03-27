@@ -1,26 +1,27 @@
 from flask import Flask, render_template, send_from_directory, make_response
 import os
 
-# This tells Flask to look specifically in the current folder for your files
+# This 'root_path' tells Render exactly where your master1 folder is
 app = Flask(__name__, 
             template_folder='templates', 
-            static_folder='static')
+            static_folder='static',
+            root_path=os.path.dirname(os.path.abspath(__file__)))
 
 @app.route('/manifest.json')
 def serve_manifest():
-    response = make_response(send_from_directory('.', 'manifest.json'))
+    response = make_response(send_from_directory(app.root_path, 'manifest.json'))
     response.headers['Content-Type'] = 'application/json'
     return response
 
 @app.route('/sw.js')
 def serve_sw():
-    response = make_response(send_from_directory('.', 'sw.js'))
+    response = make_response(send_from_directory(app.root_path, 'sw.js'))
     response.headers['Content-Type'] = 'application/javascript'
     return response
 
 @app.route('/')
 def home():
-    # Make sure your file is named portfolio.html inside the templates folder
+    # This looks for portfolio.html inside your templates folder
     return render_template('portfolio.html')
 
 if __name__ == '__main__':
