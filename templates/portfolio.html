@@ -48,6 +48,24 @@
                 </div>
 
                 <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Select Your Style</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="theme" value="cinematic" class="hidden peer" checked>
+                            <div class="p-2 border border-slate-800 rounded-lg text-center text-[10px] font-bold uppercase peer-checked:border-emerald-500 peer-checked:bg-emerald-500/10">Cinematic</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="theme" value="cyber" class="hidden peer">
+                            <div class="p-2 border border-slate-800 rounded-lg text-center text-[10px] font-bold uppercase peer-checked:border-emerald-500 peer-checked:bg-emerald-500/10">Cyber</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="theme" value="minimal" class="hidden peer">
+                            <div class="p-2 border border-slate-800 rounded-lg text-center text-[10px] font-bold uppercase peer-checked:border-emerald-500 peer-checked:bg-emerald-500/10">Minimal</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
                     <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Skills (Comma separated)</label>
                     <input type="text" name="skills" placeholder="Python, HTML, UI/UX" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 focus:border-emerald-500 outline-none text-white" required>
                 </div>
