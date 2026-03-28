@@ -1,22 +1,21 @@
-from flask import Flask, render_template, send_from_directory, make_response
-import os
+from flask import Flask, render_template, request
 
-# Simplified setup
 app = Flask(__name__)
 
-@app.route('/manifest.json')
-def serve_manifest():
-    return send_from_directory('.', 'manifest.json', mimetype='application/json')
-
-@app.route('/sw.js')
-def serve_sw():
-    return send_from_directory('.', 'sw.js', mimetype='application/javascript')
-
 @app.route('/')
-def home():
-    # This will look for 'templates/portfolio.html'
+def index():
+    # This renders your "Portfolio Creator" page
     return render_template('portfolio.html')
 
+@app.route('/view', methods=['POST'])
+def view_portfolio():
+    # This pulls the data from your form
+    name = request.form.get('name')
+    skills = request.form.get('skills')
+    bio = request.form.get('bio')
+    
+    # This sends the data to your portfolio theme
+    return render_template('builder.html', name=name, skills=skills, bio=bio)
+
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
